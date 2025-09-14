@@ -247,7 +247,7 @@ const projects = [
   },
   {
     title: "Different <br> Logos <br> (Graphic Desing)",
-    image: "assets/images/ai.png",
+    image: "assets/images/ai2.jpg",
     link: "logos.html"
   },
   {
