@@ -262,7 +262,7 @@ const projects = [
   },
   {
     title: "Heart Disease Prediction <br> System <br> (Python, Flask, ML)",
-    image: "assets/images/Images.jpg",
+    image: "assets/images/images.jpg",
     link: "https://github.com/Zaeem-Shah3321/Projects/tree/master/Semester%204/Heart%20Disease%20Prediction"
   },
   {
