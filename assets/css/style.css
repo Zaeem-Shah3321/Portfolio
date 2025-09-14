@@ -1539,6 +1539,7 @@ textarea.input-field {
 
 
 
+  
 
   /**
    * HERO
@@ -1563,6 +1564,31 @@ textarea.input-field {
     max-width: 450px;
   }
 
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+    text-align: center;
+    /* padding: 15px; smaller padding */
+    /* gap: 15px; less gap between text & image */
+  }
+
+  .intro {
+    max-width: 100%;
+  }
+
+  .intro h1 {
+    font-size: 44px;
+  }
+
+  .text-3 {
+    font-size: 20px;
+  }
+
+  .child-2 img {
+    width: 200px;
+  }
 }
 
 .child-1 {
