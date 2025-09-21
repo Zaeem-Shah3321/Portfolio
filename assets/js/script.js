@@ -344,7 +344,160 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 3000);
 });
 
-		/*PRELOADER JS*/ 
-    $('.spinner').fadeOut();
-    $('.preloader').delay(350).fadeOut('slow'); 
-  /*END PRELOADER JS*/
+
+// Terminal Loader Implementation
+document.addEventListener("DOMContentLoaded", function () {
+  const preloader = document.querySelector('.preloader');
+  
+  if (preloader) {
+    initTerminalLoader();
+  }
+});
+
+function initTerminalLoader() {
+  const terminalLines = [
+    { text: '$ ./load_portfolio.sh ●', type: 'prompt', delay: 500 },
+    { text: '', type: 'text', delay: 200 },
+    { text: '> Loading user profile...', type: 'warning', delay: 600 },
+    { text: '', type: 'text', delay: 100 },
+    { text: 'Name: Syed M Zaeem', type: 'text', delay: 400 },
+    { text: 'Role: Graphics Designer | UI/UX Designer | Web Developer', type: 'accent', delay: 600 },
+    { text: 'Location: Lahore, Pakistan', type: 'text', delay: 400 },
+    { text: 'Status: Available for freelance projects', type: 'success', delay: 500 },
+    { text: '', type: 'text', delay: 200 },
+    { text: '> Initializing portfolio components...', type: 'warning', delay: 600 },
+    { text: '✓ Loading design assets...', type: 'success', delay: 400 },
+    { text: '✓ Compiling project data...', type: 'success', delay: 400 },
+    { text: '✓ Setting up interactive elements...', type: 'success', delay: 400 },
+  ];
+
+  let totalDelay = 0;
+
+  // Add Skip button
+  const skipBtn = document.createElement('button');
+  skipBtn.className = 'skip-btn';
+  skipBtn.textContent = 'Skip';
+  skipBtn.addEventListener('click', function() {
+    completeLoading();
+  });
+  document.querySelector('.terminal-container').appendChild(skipBtn);
+
+  // Type each line with realistic timing
+  terminalLines.forEach((line, index) => {
+    totalDelay += line.delay;
+    setTimeout(() => {
+      typeLine(line, index);
+      
+      // Start progress bar after status line
+      if (index === 7) {
+        setTimeout(() => {
+          startProgressBar();
+        }, 800);
+      }
+    }, totalDelay);
+  });
+
+  function typeLine(line, index) {
+    const terminalBody = document.querySelector('.terminal-body');
+    const lineElement = document.createElement('div');
+    lineElement.className = 'terminal-line';
+    
+    let displayText = '';
+    
+    if (line.type === 'prompt') {
+      displayText = `<span class="terminal-prompt">${line.text}</span>`;
+    } else if (line.type === 'success') {
+      displayText = `<span class="terminal-success">${line.text}</span>`;
+    } else if (line.type === 'accent') {
+      displayText = `<span class="terminal-accent">${line.text}</span>`;
+    } else if (line.type === 'warning') {
+      displayText = `<span class="terminal-warning">${line.text}</span>`;
+    } else {
+      displayText = `<span class="terminal-text">${line.text}</span>`;
+    }
+    
+    lineElement.innerHTML = displayText;
+    terminalBody.appendChild(lineElement);
+    
+    // Animate line appearance
+    setTimeout(() => {
+      lineElement.classList.add('visible');
+    }, 50);
+    
+    // Auto scroll
+    terminalBody.scrollTop = terminalBody.scrollHeight;
+  }
+
+  function startProgressBar() {
+    const terminalBody = document.querySelector('.terminal-body');
+    
+    // Add progress bar HTML
+    const progressHTML = `
+      <div class="terminal-progress">
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+        <div class="progress-text">Loading Portfolio... 0%</div>
+      </div>
+    `;
+    
+    const progressContainer = document.createElement('div');
+    progressContainer.innerHTML = progressHTML;
+    terminalBody.appendChild(progressContainer);
+    
+    const progressFill = progressContainer.querySelector('.progress-fill');
+    const progressText = progressContainer.querySelector('.progress-text');
+    
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += Math.random() * 12 + 5; // Random increment between 5-17
+      
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(interval);
+        
+        setTimeout(() => {
+          completeLoading();
+        }, 500);
+      }
+      
+      progressFill.style.width = progress + '%';
+      progressText.textContent = `Loading Portfolio... ${Math.round(progress)}%`;
+      
+    }, 300);
+  }
+
+  function completeLoading() {
+    const terminalBody = document.querySelector('.terminal-body');
+    
+    // Add completion messages
+    const completionLines = [
+      '✓ Portfolio loaded successfully!',
+      '🚀 Welcome to Zaeem\'s Portfolio!'
+    ];
+    
+    completionLines.forEach((text, index) => {
+      setTimeout(() => {
+        const lineElement = document.createElement('div');
+        lineElement.className = 'terminal-line visible';
+        
+        if (text.includes('✓')) {
+          lineElement.innerHTML = `<span class="terminal-success">${text}</span>`;
+        } else {
+          lineElement.innerHTML = `<span class="terminal-accent">${text}</span>`;
+        }
+        
+        terminalBody.appendChild(lineElement);
+        terminalBody.scrollTop = terminalBody.scrollHeight;
+        
+        // Hide preloader after last message
+        if (index === completionLines.length - 1) {
+          setTimeout(() => {
+            const preloader = document.querySelector('.preloader');
+            preloader.classList.add('preloader-deactivate');
+          }, 800);
+        }
+      }, index * 400);
+    });
+  }
+}
