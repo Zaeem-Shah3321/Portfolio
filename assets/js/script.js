@@ -241,17 +241,17 @@ const projects = [
   
 
   {
-    title: "Drizzle Soft Ice Cream <br> Shop Designs <br> (Graphic Desing)",
+    title: "Drizzle Soft Ice Cream <br> Shop Designs <br> (Graphics Designing)",
     image: "assets/images/drz.jpg",
     link: "drizzle.html"
   },
   {
-    title: "Different <br> Logos <br> (Graphic Desing)",
+    title: "Different <br> Logos <br> (Graphics Designing)",
     image: "assets/images/ai2.jpg",
     link: "logos.html"
   },
   {
-    title: "Additional <br> Designs <br> (Graphic Desing)",
+    title: "Additional <br> Designs <br> (Graphics Designing)",
     image: "assets/images/Websites.png", 
     link: "additional.html"
   },
