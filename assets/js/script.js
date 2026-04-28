@@ -224,9 +224,19 @@ function downloadCV() {
 }
 const projects = [
   {
-    title: "Custom Cardboard Boxes <br> (Wordpress)",
-    image: "assets/images/CCB.png",
-    link: "https://customcardboardboxes.co/"
+    title: "Aconectus <br> (Fignma UI/UX)",
+    image: "assets/images/ac-final.jpg",
+    link: "https://www.figma.com/design/gXbIIWc35VW67fkWWuSSEJ/Aconectus-Copy?node-id=0-1&t=5pOwU5BRu3C4neIJ-1"
+  },
+  {
+    title: "DLM Group <br> (Figma UI/UX)",
+    image: "assets/images/dlm.png",
+    link: "https://www.figma.com/design/h1BSWNEY4u3tBL3B86q72n/DLM-Project--Copy-?node-id=0-1&t=Ni2Y0MYyrttWsElx-1"
+  },
+  {
+    title: "One Homes <br> (Figma UI/UX)",
+    image: "assets/images/oh.png",
+    link: "https://www.figma.com/design/XjqqJ4WjNAzUbKYzNTUwHG/One-Homes--Copy-?node-id=0-1&t=gyu81X99p08sZhrh-1"
   },
   {
     title: "Junk Cars For <br> Cash  <br> (Wordpress)",
@@ -239,7 +249,6 @@ const projects = [
     link: "https://medicalbillingcompany.co/"
   },
   
-
   {
     title: "Drizzle Soft Ice Cream <br> Shop Designs <br> (Graphics Designing)",
     image: "assets/images/drz.jpg",
