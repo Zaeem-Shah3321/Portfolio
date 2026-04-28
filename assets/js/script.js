@@ -224,7 +224,7 @@ function downloadCV() {
 }
 const projects = [
   {
-    title: "Aconectus <br> (Fignma UI/UX)",
+    title: "Aconectus <br> (Figma UI/UX)",
     image: "assets/images/ac-final.jpg",
     link: "https://www.figma.com/design/gXbIIWc35VW67fkWWuSSEJ/Aconectus-Copy?node-id=0-1&t=5pOwU5BRu3C4neIJ-1"
   },
